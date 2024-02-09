@@ -14,15 +14,26 @@ public class PlayerStateUI : MonoBehaviour
     public TMP_Text Succeed;
     public TMP_Text Lives;
 
-    public void UpdatePlayerStateText(string _name, string _major, int _money, int _health, int _endu, int _round, int _succeed, int _lives)
+
+    private void OnEnable()
     {
-        Name.text = _name;
-        Major.text = _major;
-        Money.text = _money.ToString();
-        Health.text = _health.ToString();
-        Endu.text = _endu.ToString();
-        Round.text = _round.ToString();
-        Succeed.text = _succeed.ToString();
-        Lives.text = _lives.ToString();
+        EventHandle.UpdatePlayerStateUIEvent += UpdatePlayerStateText;
+    }
+
+    private void OnDisable()
+    {
+        EventHandle.UpdatePlayerStateUIEvent -= UpdatePlayerStateText;
+    }
+
+    public void UpdatePlayerStateText(PlayerState_SO state)
+    {
+        Name.text = state.PlayerName;
+        Major.text = state.PlayerMajor;
+        Money.text = state.Money.ToString();
+        Health.text = state.BaseHealth.ToString();
+        Endu.text = state.BaseEndu.ToString();
+        Round.text = state.Round.ToString();
+        Succeed.text = state.Victories.ToString();
+        Lives.text = state.Lives.ToString();
     }
 }

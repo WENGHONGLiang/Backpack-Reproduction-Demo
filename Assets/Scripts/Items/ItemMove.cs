@@ -14,10 +14,14 @@ public class ItemMove : Interactable
     int rowCount;
     int colCount;
 
+    Transform itemUsingParent;
+    Transform itemUnusedParent;
+
     FixedBackpack fixedBackpack;
 
     ItemInfluence itemInfluence;
 
+    //Fixme：把基本信息都放到SO里
     [Header("Test")]
     public GameObject NodeImagePrefab;
 
@@ -32,8 +36,18 @@ public class ItemMove : Interactable
 
 
 
+
     private void Start()
     {
+
+        if (ShopManager.instance == null)
+        {
+            enabled = false;
+            return;
+        }
+            itemUsingParent = BackpackManager.instance.itemUsingParent;
+        itemUnusedParent = BackpackManager.instance.itemUnusedParent;
+
         // 初始化道具网格
         UpdateItemGrid(startRowCount, startColCount);
 
@@ -43,6 +57,7 @@ public class ItemMove : Interactable
 
         state = ItemState.Sale;
         itemPos = ShopManager.instance.ItemPoints[ShopIndex].position;
+
         curGridNodeList = null;
         CanInteract = true;
 
@@ -72,6 +87,7 @@ public class ItemMove : Interactable
         if (!CanInteract)
             return;
 
+        ShopManager.instance.HideItemInfoUI();
         itemInfluence.ShowStar();
 
         // 点击时，改变item占用的GridNode的状态
@@ -98,6 +114,7 @@ public class ItemMove : Interactable
         if (state == ItemState.Unused)
         {
             state = ItemState.Using;
+            transform.parent = itemUsingParent;
 
             // 初始化旋转
             transform.rotation = Quaternion.identity;
@@ -253,9 +270,9 @@ public class ItemMove : Interactable
 
     }
 
-    public override void Interact()
+    public override void DragAndInteract()
     {
-        base.Interact();
+        base.DragAndInteract();
 
         if (!CanInteract)
             return;
@@ -264,6 +281,22 @@ public class ItemMove : Interactable
         UpdateItemGrid(colCount, rowCount);
 
         transform.Rotate(new Vector3(0, 0, 90), Space.Self);
+    }
+
+    public override void Interact()
+    {
+        base.Interact();
+
+        ShopManager.instance.ShowItemInfoUI(item);
+        itemInfluence.ShowStar();
+    }
+
+    public override void InteractComplete()
+    {
+        base.InteractComplete();
+
+        ShopManager.instance.HideItemInfoUI();
+        itemInfluence.HideStar();
     }
 
     /// <summary>
@@ -344,7 +377,7 @@ public class ItemMove : Interactable
     void UseItem(List<Node> nodeList, ItemType itemType)
     {
         state = ItemState.Using;
-
+        transform.parent = itemUsingParent;
         BackpackManager.instance.AddItem(item);
         GridManager.instance.ChangeItemInfoForNodes(nodeList, itemType, item.itemName);
     }
@@ -354,6 +387,7 @@ public class ItemMove : Interactable
         itemPos = ShopManager.instance.storagePos.position;
         state = ItemState.Unused;
 
+        transform.parent = itemUnusedParent;
         Invoke("SetPhy", .7f);
     }
 

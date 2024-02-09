@@ -35,6 +35,7 @@ public class ShopManager : MonoBehaviour
     List<GameObject> ItemGOInShop;      // 商店现有道具
 
     public Transform storagePos;
+    public ItemInfoUI itemInfoUI;
 
     void Start()
     {
@@ -146,5 +147,20 @@ public class ShopManager : MonoBehaviour
         }
         return null;
 
+    }
+
+    public void ShowItemInfoUI(Item_SO item)
+    {
+        if (itemInfoUI == null)
+            return;
+        itemInfoUI.gameObject.SetActive(true);
+        itemInfoUI.UpdateItemInfoUI(item);
+    }
+
+    public void HideItemInfoUI()
+    {
+        if (itemInfoUI == null)
+            return;
+        itemInfoUI.gameObject.SetActive(false);
     }
 }

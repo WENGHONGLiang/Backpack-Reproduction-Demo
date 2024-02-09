@@ -2,6 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 记录单条互相影响信息
+/// </summary>
+[System.Serializable]
+public struct InfluenceInfo
+{
+    public Item_SO influent;
+    public Item_SO target;
+    public int index;
+}
+
 public class ItemInfluence : MonoBehaviour
 {
     public List<int> SpecialNodeIndex;
@@ -13,12 +24,11 @@ public class ItemInfluence : MonoBehaviour
 
     List<Node> itemInfluenceGrid;
     public List<GameObject> starObj;
-
-    public Dictionary<int, Item_SO> influenceItems;
+    Item_SO item;
 
     private void Start()
     {
-        influenceItems = new Dictionary<int, Item_SO>();
+        item = GetComponent<ItemMove>().item;
     }
 
     /// <summary>
@@ -128,7 +138,11 @@ public class ItemInfluence : MonoBehaviour
             Item_SO so = ShopManager.instance.FindItemSOByName(node._itemName);
             if (so != null) 
             {
-                influenceItems.Add(index, so);
+                InfluenceInfo info = new InfluenceInfo();
+                info.influent = item;
+                info.target = so;
+                info.index = index;
+                BackpackManager.instance.influenceInfos.Add(info);
             }
         }
         //Debug.Log(name + " : Add  " + influenceItems.Count);
@@ -141,7 +155,14 @@ public class ItemInfluence : MonoBehaviour
         if (starSprite.sprite == starEmpty) return;
 
         starSprite.sprite = starEmpty;
-        influenceItems.Remove(index);
+        foreach (var info in BackpackManager.instance.influenceInfos) 
+        {
+            if (info.influent == item && info.index == index)
+            {
+                BackpackManager.instance.influenceInfos.Remove(info);
+                break;
+            }
+        }
 
         //Debug.Log(name + " : Clear " + influenceItems.Count);
 

@@ -33,3 +33,10 @@ public enum NodeState
     Backpack,
     Item
 }
+
+public enum Scenes
+{
+    ManagerScene,
+    ShopScene,
+    BattleScene
+}

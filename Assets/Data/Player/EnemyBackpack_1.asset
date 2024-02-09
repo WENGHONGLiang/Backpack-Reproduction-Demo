@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f2a2fa8e30a954aa4242e5a196cfe5, type: 3}
+  m_Name: EnemyBackpack_1
+  m_EditorClassIdentifier: 
+  ItemToNodeIndex:
+  - itemPrefab: {fileID: 1628065509237619459, guid: 6d0fef06f211993468d62fac0aefab77, type: 3}
+    nodeIndexs:
+    - {x: 4, y: 2}
+    - {x: 4, y: 3}
+    - {x: 5, y: 2}
+    - {x: 5, y: 3}
+    rotateNum: 0
+  - itemPrefab: {fileID: 123866220375067233, guid: d76ac38c516bd6a46a8c901ad9f08eaf, type: 3}
+    nodeIndexs:
+    - {x: 2, y: 4}
+    - {x: 3, y: 4}
+    - {x: 4, y: 4}
+    - {x: 5, y: 4}
+    rotateNum: 1
+  - itemPrefab: {fileID: 2926686834221628270, guid: 852ade27817946944b32f19f77f712f2, type: 3}
+    nodeIndexs:
+    - {x: 4, y: 2}
+    - {x: 5, y: 2}
+    rotateNum: 0
+  - itemPrefab: {fileID: 1673963718163667770, guid: 528cc901353990c488f5c365458787c0, type: 3}
+    nodeIndexs:
+    - {x: 4, y: 3}
+    - {x: 5, y: 4}
+    - {x: 4, y: 3}
+    - {x: 5, y: 4}
+    rotateNum: 0
+  - itemPrefab: {fileID: 1556980385021550808, guid: 8431746b2a262a24881e74592ef1360f, type: 3}
+    nodeIndexs:
+    - {x: 4, y: 5}
+    rotateNum: 0
+  - itemPrefab: {fileID: 8599353120558984199, guid: 11ddf4fc90dbb854e894ad4b3417841a, type: 3}
+    nodeIndexs:
+    - {x: 4, y: 5}
+    rotateNum: 0
+  weapons:
+  - {fileID: 11400000, guid: fe5a164ff3c4d2243a8165c50b3ad921, type: 2}
+  - {fileID: 11400000, guid: fe5a164ff3c4d2243a8165c50b3ad921, type: 2}
+  - {fileID: 11400000, guid: fe5a164ff3c4d2243a8165c50b3ad921, type: 2}
+  - {fileID: 11400000, guid: fe5a164ff3c4d2243a8165c50b3ad921, type: 2}
+  - {fileID: 11400000, guid: fe5a164ff3c4d2243a8165c50b3ad921, type: 2}
+  - {fileID: 11400000, guid: fe5a164ff3c4d2243a8165c50b3ad921, type: 2}
+  - {fileID: 11400000, guid: fe5a164ff3c4d2243a8165c50b3ad921, type: 2}
+  - {fileID: 11400000, guid: 50c0f03c408260644a6f61fe26287ab3, type: 2}
+  shields: []
+  decorations:
+  - {fileID: 11400000, guid: 6b844b2708b64e8428132c3c734aeabe, type: 2}

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6ca8e437dffe140a91c0a0b7a8ed4c, type: 3}
   m_Name: Shield_1
   m_EditorClassIdentifier: 
-  itemName: Shield_1
+  itemName: "\u76FE\u724C"
+  itemDescription: "\u5BF9 * \u7684\u6B66\u5668\u589E\u52A0 10% \u547D\u4E2D\u7387"
   icon: {fileID: 21300000, guid: 7c7e67e85b1dfe04597311336041defc, type: 3}
   itemLevel: 0
   itemType: 2

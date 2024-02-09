@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399dcb538845f39408fa6af7f09744c7, type: 3}
   m_Name: Backpack_4
   m_EditorClassIdentifier: 
-  itemName: Backpack_4
+  itemName: "\u957F\u80CC\u5305"
+  itemDescription: "\u63D0\u4F9B4\u683C\u80CC\u5305"
   icon: {fileID: 21300000, guid: 617ae863964adec409c721cf2bac4505, type: 3}
   itemLevel: 0
   itemType: 8
   cost: 6
+  influenceType: 0

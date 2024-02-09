@@ -21,7 +21,8 @@ public class CursorManager : MonoBehaviour
     Vector3 mouseWorldPos => Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
     Vector3 lastMouseWorldPos = Vector3.zero;
     Vector3 mouseMoveDelta = Vector3.zero;
-    Interactable interacter = null;
+    Interactable interacter_left = null;
+    Interactable interacter_right = null;
 
 
     public Vector3 GetMousePos()
@@ -54,9 +55,8 @@ public class CursorManager : MonoBehaviour
 
             if (interactObject && interactObject.tag == "Interactable")
             {
-                Debug.Log("Mouse Start Interact");
-                interacter = interactObject.GetComponent<Interactable>();
-                interacter.Press();
+                interacter_left = interactObject.GetComponent<Interactable>();
+                interacter_left.Press();
 
                 GridManager.instance.ShowGrid();
             }
@@ -65,31 +65,57 @@ public class CursorManager : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            if (interacter)
+            if (interacter_left)
             {
-                interacter.Drag();
+                interacter_left.Drag();
             }
         }
 
         // 鼠标松开可交互对象
         if (Input.GetMouseButtonUp(0))
         {
-            if (interacter)
+            if (interacter_left)
             {
-                Debug.Log("Mouse Release");
-                interacter.Release();
-                interacter = null;
+                interacter_left.Release();
+                interacter_left = null;
             }
             GridManager.instance.HideGrid();
         }
 
+        // 左右键同时
         if (Input.GetMouseButtonDown(1))
         {
-            if (interacter)
+            if (interacter_left)
             {
-                interacter.Interact();
+                interacter_left.DragAndInteract();
             }
         }
+
+        if (Input.GetMouseButtonDown(1) && !interacter_left)
+        {
+            var interactObjects = ObjectAtMousePosition();
+            Collider2D interactObject = null;
+            if (interactObjects.Length > 1)
+                interactObject = interactObjects[0].gameObject.layer != LayerMask.NameToLayer("Backpack") ? interactObjects[0] : interactObjects[1];
+            else if (interactObjects.Length > 0)
+                interactObject = interactObjects[0];
+
+            if (interactObject && interactObject.tag == "Interactable")
+            {
+                interacter_right = interactObject.GetComponent<Interactable>();
+                interacter_right.Interact();
+            }
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+         
+            if (interacter_right != null)
+            {
+                interacter_right.InteractComplete();
+                interacter_right = null;
+            }
+        }
+
         mouseMoveDelta = mouseWorldPos - lastMouseWorldPos;
 
         mouseMoveDelta = mouseMoveDelta.magnitude > 9 ? Vector3.zero : mouseMoveDelta;

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f2a2fa8e30a954aa4242e5a196cfe5, type: 3}
+  m_Name: EnemyBackpack_2
+  m_EditorClassIdentifier: 
+  ItemToNodeIndex:
+  - itemPrefab: {fileID: 1628065509237619459, guid: 6d0fef06f211993468d62fac0aefab77, type: 3}
+    nodeIndexs:
+    - {x: 4, y: 2}
+    - {x: 4, y: 3}
+    - {x: 5, y: 2}
+    - {x: 5, y: 3}
+    rotateNum: 0
+  - itemPrefab: {fileID: 2926686834221628270, guid: 852ade27817946944b32f19f77f712f2, type: 3}
+    nodeIndexs:
+    - {x: 4, y: 2}
+    - {x: 5, y: 2}
+    rotateNum: 0
+  weapons:
+  - {fileID: 11400000, guid: fe5a164ff3c4d2243a8165c50b3ad921, type: 2}
+  shields: []
+  decorations: []

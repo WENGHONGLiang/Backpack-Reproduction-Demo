@@ -10,29 +10,46 @@ public class Interactable : MonoBehaviour
     {
         if (!CanInteract)
             return;
-        Debug.Log("Press : " + transform.name);
+        //Debug.Log("Press : " + transform.name);
     }
 
     public virtual void Drag()
     {
         if (!CanInteract)
             return;
-        Debug.Log("Drag : " + transform.name);
+        //Debug.Log("Drag : " + transform.name);
     }
 
     public virtual void Release()
     {
         if (!CanInteract)
             return;
-        Debug.Log("Release : " + transform.name);
+        //Debug.Log("Release : " + transform.name);
     }
 
-    // ÓÒ¼ü
+    // ÍÏ×§Ê±ÓÒ¼ü
+    public virtual void DragAndInteract()
+    {
+        if (!CanInteract)
+            return;
+        //Debug.Log("Interact : " + transform.name);
+    }
+
+    // ÓÒ¼üµã»÷
     public virtual void Interact()
     {
         if (!CanInteract)
             return;
-        Debug.Log("Interact : " + transform.name);
+        //Debug.Log("Interact : " + transform.name);
     }
+
+    // ÓÒ¼üËÉ¿ª
+    public virtual void InteractComplete()
+    {
+        if (!CanInteract)
+            return;
+        //Debug.Log("InteractComplete : " + transform.name);
+    }
+
 
 }

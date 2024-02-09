@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Windows;
 using static UnityEditor.Progress;
+
 
 /// <summary>
 /// 记录背包内所有道具的数据
@@ -25,15 +27,21 @@ public class BackpackManager : MonoBehaviour
     }
     #endregion
 
+    public Transform itemUsingParent;
+    public Transform itemUnusedParent;
+
     public List<Weapon_SO> weapons;
     public List<ShieldItem_SO> shields;
     public List<Decoration_SO> decorations;
+
+    public List<InfluenceInfo> influenceInfos;
 
     private void Start()
     {
         weapons = new List<Weapon_SO>();
         shields = new List<ShieldItem_SO>();
         decorations = new List<Decoration_SO>();
+        influenceInfos = new List<InfluenceInfo>();
     }
 
     public void AddItem(Item_SO new_item)

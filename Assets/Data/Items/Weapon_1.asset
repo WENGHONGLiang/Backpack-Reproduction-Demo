@@ -12,14 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61795cf80cfa8548834752815fef76d, type: 3}
   m_Name: Weapon_1
   m_EditorClassIdentifier: 
-  itemName: Weapon_1
+  itemName: "\u957F\u5251"
+  itemDescription: "\u5BF9 * \u7684\u6B66\u5668\u589E\u52A0 2 \u70B9\u989D\u5916\u4F24\u5BB3"
   icon: {fileID: 21300000, guid: 2a552fa81309a624a8b47ebdc088175a, type: 3}
   itemLevel: 0
   itemType: 1
   cost: 2
   influenceType: 1
-  MaxDamage: 3
-  MinDamage: 1
-  EnduConsumption: 1
+  CoolDown: 4
+  UseOnce: 0
+  lastUsedTime: 22.582565
+  CanUse: 1
+  MaxDamage: 7
+  MinDamage: 4
+  EnduConsumption: 3
   HitRate: 0.9
-  CoolDown: 1.4
+  AddExtraDamage: 0
+  AddExtraHitRate: 0
+  ExtraDamage: 0
+  ExtraHitRate: 0

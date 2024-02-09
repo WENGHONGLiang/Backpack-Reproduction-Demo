@@ -7,5 +7,5 @@ public class ShieldItem_SO : Item_SO
 {
     [Header("ª§∂‹–≈œ¢")]
     public float DefenseRate;
-    public int Defense;
+    public int DefenseValue;
 }

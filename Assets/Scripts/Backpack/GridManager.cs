@@ -34,9 +34,6 @@ public class GridManager : MonoBehaviour
     public Transform NodeImageParent;
     public GameObject NodeImagePrefab;
 
-    [Header("放入背包")]
-    public float distanceThreshold;
-
 
     // Start is called before the first frame update
     void Start()
@@ -56,21 +53,21 @@ public class GridManager : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other && other.tag == "Interactable")
-        {
-            ShowGrid();
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision && collision.tag == "Interactable")
-        {
-            HideGrid();
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other && other.tag == "Interactable")
+    //    {
+    //        ShowGrid();
+    //    }
+    //}
+    //
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision && collision.tag == "Interactable")
+    //    {
+    //        HideGrid();
+    //    }
+    //}
 
     private void InitGrid()
     {
@@ -176,5 +173,13 @@ public class GridManager : MonoBehaviour
             grid[node._gridRow, node._gridCol]._itemType = type;
             grid[node._gridRow, node._gridCol]._itemName = itemName;
         }
+    }
+
+    /// <summary>
+    /// 根据索引获得实际世界坐标
+    /// </summary>
+    public Vector3 GetNodePosByIndex(Vector2Int index)
+    {
+        return grid[index.y, index.x]._worldPos;
     }
 }

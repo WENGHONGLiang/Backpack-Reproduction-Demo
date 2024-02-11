@@ -18,6 +18,10 @@ MonoBehaviour:
   itemLevel: 0
   itemType: 2
   cost: 4
-  influenceType: 3
+  influenceType: 1
+  CoolDown: 0
+  UseOnce: 0
+  lastUsedTime: 0
+  CanUse: 0
   DefenseRate: 0.35
-  Defense: 4
+  DefenseValue: 0

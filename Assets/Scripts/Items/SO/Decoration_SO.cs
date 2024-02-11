@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Decoration", menuName = "Backpack/Decoration")]
-public class Decoration_SO : Item_SO
+public class Decoration_SO : Item_SO, ICloneable
 {
     [Header("提供增益减益")]
     public int Defense = 0;
@@ -39,5 +40,30 @@ public class Decoration_SO : Item_SO
 
         if (UseOnce)
             CanUse = false;
+    }
+
+    public object Clone()
+    {
+        Decoration_SO clone = CreateInstance<Decoration_SO>();
+
+        clone.itemName = this.itemName;
+        clone.itemDescription = this.itemDescription;
+        clone.icon = this.icon;
+        clone.itemType = this.itemType;
+        clone.cost = this.cost;
+        clone.itemLevel = this.itemLevel;
+        clone.influenceType = this.influenceType;
+        clone.CoolDown = this.CoolDown;
+        clone.UseOnce = this.UseOnce;
+        clone.CanUse = this.CanUse;
+        clone.lastUsedTime = this.lastUsedTime;
+
+
+        clone.Defense = Defense;
+        clone.Recover = Recover;
+        clone.Luck = Luck;
+        clone.Poisoned = Poisoned;
+        clone.Blind = Blind;
+        return clone;
     }
 }

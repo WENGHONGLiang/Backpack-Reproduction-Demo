@@ -3414,8 +3414,8 @@ GameObject:
   m_Component:
   - component: {fileID: 885776021}
   - component: {fileID: 885776022}
-  - component: {fileID: 885776024}
   - component: {fileID: 885776023}
+  - component: {fileID: 885776024}
   - component: {fileID: 885776025}
   m_Layer: 0
   m_Name: GM
@@ -3487,8 +3487,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attribute: {fileID: 11400000, guid: 61acca8c558add2499172b3507ff6e33, type: 2}
   influenceInfos: []
-  state: {fileID: 11400000, guid: 7569c7e8ab4e0294892ac7109efe4833, type: 2}
-  backpack: {fileID: 11400000, guid: cd6cb0d43dce44d4f96e4c91764a2193, type: 2}
+  enemys:
+  - state: {fileID: 11400000, guid: 7569c7e8ab4e0294892ac7109efe4833, type: 2}
+    backpack: {fileID: 11400000, guid: cd6cb0d43dce44d4f96e4c91764a2193, type: 2}
+  - state: {fileID: 11400000, guid: 3604fa5e7d5f9164dba4c8f59f1e0bed, type: 2}
+    backpack: {fileID: 11400000, guid: bae0bd53ecba7da40815194b2313751d, type: 2}
+  - state: {fileID: 11400000, guid: c8b5bb0fe91d4544bb50bc5cdb3a4879, type: 2}
+    backpack: {fileID: 11400000, guid: cb43b6d0c4528194595f02041be7bd34, type: 2}
 --- !u!114 &885776025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7860,8 +7865,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 292.282, y: 78.3945}
+  m_AnchoredPosition: {x: 15.701, y: 0}
+  m_SizeDelta: {x: 485.3, y: 78.3945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2087852543
 MonoBehaviour:

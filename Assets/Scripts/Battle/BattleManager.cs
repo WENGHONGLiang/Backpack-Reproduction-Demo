@@ -14,7 +14,8 @@ public class BattleManager : MonoBehaviour
     bool bEnd;
     private void Start()
     {
-        bEnd = false;
+        bEnd = true;
+        Invoke("StartBattle", 2);
         InitItems();
         PlayerState.instance.attribute.SetShield(BackpackManager.instance.shields);
         EnemyManager.instance.attribute.SetShield(EnemyManager.instance.GetShield());
@@ -28,6 +29,11 @@ public class BattleManager : MonoBehaviour
         PlayerState.instance.UpdateAttribute();
         EnemyManager.instance.UpdateAttribute();
         CheckResult();
+    }
+
+    void StartBattle()
+    {
+        bEnd = false;
     }
 
     void InitItems()
@@ -57,14 +63,15 @@ public class BattleManager : MonoBehaviour
         {
             decoration.InitItem();
         }
-        foreach (var info in BackpackManager.instance.influenceInfos)
-        {
-            info.influent.InfluentItem(info.target);
-        }
-        foreach (var info in EnemyManager.instance.influenceInfos)
-        {
-            info.influent.InfluentItem(info.target);
-        }
+
+        //foreach (var info in BackpackManager.instance.influenceInfos)
+        //{
+        //    info.influent.InfluentItem(info.target);
+        //}
+        //foreach (var info in EnemyManager.instance.influenceInfos)
+        //{
+        //    info.influent.InfluentItem(info.target);
+        //}
     }
 
     void UsePlayerItems()
@@ -84,6 +91,7 @@ public class BattleManager : MonoBehaviour
     {
         foreach (var weapon in EnemyManager.instance.GetWeapons())
         {
+            Debug.Log(weapon.itemName);
             weapon.UseItem(EnemyManager.instance.attribute, PlayerState.instance.attribute);
         }
         foreach (var decoration in EnemyManager.instance.GetDecoration())
@@ -104,6 +112,7 @@ public class BattleManager : MonoBehaviour
             InfoPanel.SetActive(true);
             VictoriesNum.text = PlayerState.instance.state.Victories.ToString();
             RetryNum.text = PlayerState.instance.state.Lives.ToString();
+            CheckGameEnd();
         }
         if (!PlayerState.instance.attribute.IsAlive())
         {
@@ -115,6 +124,15 @@ public class BattleManager : MonoBehaviour
             InfoPanel.SetActive(true);
             VictoriesNum.text = PlayerState.instance.state.Victories.ToString();
             RetryNum.text = PlayerState.instance.state.Lives.ToString();
+            CheckGameEnd();
+        }
+    }
+
+    void CheckGameEnd()
+    {
+        if (PlayerState.instance.state.Round == 2)
+        {
+            // EndGame
         }
     }
 }

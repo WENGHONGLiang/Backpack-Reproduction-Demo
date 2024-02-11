@@ -15,7 +15,7 @@ public class SceneFader : MonoBehaviour
         StartCoroutine(FadeIn());
 
         // Fixme: 换一个地方初始化
-        PlayerState.instance.InitPlayerState();
+        PlayerState.instance.UpdatePlayerState();
         PlayerState.instance.InitPlayerAttribute();
     }
 

@@ -52,7 +52,7 @@ public class PlayerState : MonoBehaviour
         state.Round++;
         state.Victories++;
         state.BaseHealth += 10;
-        state.Money += 9;
+        state.Money += 20;
         EventHandle.CallUpdatePlayerStateUIEvent(state);
     }
 
@@ -61,14 +61,25 @@ public class PlayerState : MonoBehaviour
         state.Round++;
         state.Lives--;
         state.BaseHealth += 10;
-        state.Money += 9;
+        state.Money += 20;
         EventHandle.CallUpdatePlayerStateUIEvent(state);
+    }
+
+    public void InitPlayerState()
+    {
+        state.Round = 0;
+        state.Victories = 0;
+        state.Lives = 5;
+        state.Money = 25;
+        state.BaseHealth = 35;
+        state.BaseEndu = 5;
+        UpdatePlayerState();
     }
 
     /// <summary>
     /// ³õÊ¼»¯×´Ì¬
     /// </summary>
-    public void InitPlayerState()
+    public void UpdatePlayerState()
     {
         EventHandle.CallUpdatePlayerStateUIEvent(state);
     }

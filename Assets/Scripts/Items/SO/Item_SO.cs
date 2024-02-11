@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,19 +21,16 @@ public class Item_SO : ScriptableObject
     [HideInInspector] public float lastUsedTime = 0;
     [HideInInspector] public bool CanUse;
 
+
     public virtual void InitItem()
     {
         lastUsedTime = 0;
         CanUse = true;
     }
-
     public virtual void UseItem(PlayerAttribute source, PlayerAttribute target)
-    {
-        //Debug.Log(source.GetPlayerName() + " use item : " + itemName + " for " + target.GetPlayerName());
-    }
-
-    public virtual void InfluentItem(Item_SO otherItem)
     {
         
     }
+    public virtual void InfluentItem(Item_SO otherItem){}
+
 }

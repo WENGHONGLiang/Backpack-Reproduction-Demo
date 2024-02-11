@@ -18,23 +18,43 @@ public class EnemyManager : MonoBehaviour
     }
     #endregion
 
+    [System.Serializable]
+    public struct Enemy
+    {
+        public PlayerState_SO    state;
+        public PlayerBackpack_SO backpack;
+    }
+
     [HideInInspector] public PlayerAttribute attribute;
     public List<InfluenceInfo> influenceInfos;
 
-    // 敌人数据 // 每个敌人一个
-    public PlayerState_SO state;            
-    public PlayerBackpack_SO backpack;
+    // 敌人数据 // 选择一个和玩家相同回合数的
+    public Enemy[] enemys;
+    Enemy curEnemy;
 
     private void OnEnable()
     {
         attribute = GetComponent<PlayerAttribute>();
         influenceInfos = new List<InfluenceInfo>();
+        InitEnemyState();
+        InitEnemyItem();
+        
     }
-
     private void Start()
     {
-        InitEnemyItem();
         InitEnemyAttribute();
+    }
+
+    void InitEnemyState()
+    {
+        foreach (var enemy in enemys) 
+        {
+            if (enemy.state.Round == PlayerState.instance.state.Round)
+            {
+                curEnemy = enemy;
+                break;
+            }
+        }
     }
 
     /// <summary>
@@ -42,9 +62,9 @@ public class EnemyManager : MonoBehaviour
     /// </summary>
     public void InitEnemyItem()
     {
-        backpack.InitBackpack();
+        curEnemy.backpack.InitBackpack();
         // 遍历所有道具
-        foreach (var itemToNodeIndex in backpack.ItemToNodeIndex)
+        foreach (var itemToNodeIndex in curEnemy.backpack.ItemToNodeIndex)
         {
             //遍历道具的所有节点 // 计算道具应该在的世界位置
             Vector3 worldPos = CalculateItemPos(itemToNodeIndex.nodeIndexs);
@@ -57,13 +77,13 @@ public class EnemyManager : MonoBehaviour
             switch (so.itemType) 
             {
                 case ItemType.Weapon:
-                    backpack.weapons.Add((Weapon_SO)so);
+                    curEnemy.backpack.weapons.Add((Weapon_SO)((Weapon_SO)so).Clone());
                     break;
                 case ItemType.Shield:
-                    backpack.shields.Add((ShieldItem_SO)so);
+                    curEnemy.backpack.shields.Add((ShieldItem_SO)((ShieldItem_SO)so).Clone());
                     break;
                 case ItemType.Decoration:
-                    backpack.decorations.Add((Decoration_SO)so);
+                    curEnemy.backpack.decorations.Add((Decoration_SO)((Decoration_SO)so).Clone());
                     break;
             }
         }
@@ -83,28 +103,28 @@ public class EnemyManager : MonoBehaviour
 
     public List<Weapon_SO> GetWeapons()
     {
-        return backpack.weapons;
+        return curEnemy.backpack.weapons;
     }
 
     public List<ShieldItem_SO> GetShield()
     {
-        return backpack.shields;
+        return curEnemy.backpack.shields;
     }
 
     public List<Decoration_SO> GetDecoration()
     {
-        return backpack.decorations;
+        return curEnemy.backpack.decorations;
     }
 
     public void InitEnemyAttribute()
     {
-        attribute.InitAttribute(state);
+        attribute.InitAttribute(curEnemy.state);
         UpdateAttribute();
     }
 
     public void UpdateAttribute()
     {
         attribute.UpdateAttribute();
-        EventHandle.CallUpdateEnemyAttributeUIEvent(state, attribute);
+        EventHandle.CallUpdateEnemyAttributeUIEvent(curEnemy.state, attribute);
     }
 }

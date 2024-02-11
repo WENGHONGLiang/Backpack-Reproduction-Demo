@@ -18,6 +18,7 @@ public class GridManager : MonoBehaviour
             Debug.LogWarning("more than one GridManager");
             return;
         }
+        InitGrid();
         instance = this;
     }
     #endregion
@@ -33,13 +34,6 @@ public class GridManager : MonoBehaviour
     [Header("Node")]
     public Transform NodeImageParent;
     public GameObject NodeImagePrefab;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        InitGrid();
-    }
 
     public void ShowGrid()
     {

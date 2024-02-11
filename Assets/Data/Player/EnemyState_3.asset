@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 337b44802cf48ab498d3a203a39de4ec, type: 3}
-  m_Name: EnemyState_1
+  m_Name: EnemyState_3
   m_EditorClassIdentifier: 
-  PlayerName: "\u7B80\u5355\u7684\u654C\u4EBA"
-  PlayerMajor: "\u72C2\u6218\u58EB"
+  PlayerName: "\u51F6\u72E0\u7684\u654C\u4EBA"
+  PlayerMajor: "\u6CD5\u5E08"
   Money: 12
   Lives: 5
-  BaseHealth: 35
+  BaseHealth: 55
   BaseEndu: 5
-  Round: 0
-  Victories: 0
+  Round: 2
+  Victories: 1

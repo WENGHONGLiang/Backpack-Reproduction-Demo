@@ -43,6 +43,7 @@ public class PlayerAttribute : MonoBehaviour
 
     public void InitAttribute(PlayerState_SO state)
     {
+
         PlayerName = state.PlayerName;
 
         // Fixme：应该是 MaxHealth = BaseHealth + 道具加成
@@ -110,6 +111,9 @@ public class PlayerAttribute : MonoBehaviour
 
     public int UseShield(int amount)
     {
+        if (ShieldList == null)
+            return 0;
+
         foreach (var shield in ShieldList)
         {
             // 防御概率
@@ -138,7 +142,7 @@ public class PlayerAttribute : MonoBehaviour
             return false;
 
         CurEndu -= amount;
-        Debug.Log(PlayerName + " Endu : " + CurEndu);
+        //Debug.Log(PlayerName + " Endu : " + CurEndu);
         return true;
     }
 

@@ -13,15 +13,21 @@ MonoBehaviour:
   m_Name: Weapon_2
   m_EditorClassIdentifier: 
   itemName: "\u53CC\u5200"
-  itemDescription: "\u5BF9 * \u7684\u76FE\u724C\u589E\u52A0\u989D\u5916 30% \u62B5\u6321\u6982\u7387"
+  itemDescription: "\u5BF9 * \u7684\u6B66\u5668\u63D0\u4F9B 3 \u70B9\u989D\u5916\u4F24\u5BB3"
   icon: {fileID: 21300000, guid: 00c7cd0365cd9894bbdd9315c71d6f48, type: 3}
   itemLevel: 0
   itemType: 1
   cost: 3
   influenceType: 1
   CoolDown: 3
-  lastUsedTime: 24.007957
+  UseOnce: 0
+  lastUsedTime: 3.0005205
+  CanUse: 1
   MaxDamage: 5
   MinDamage: 2
   EnduConsumption: 1
   HitRate: 0.65
+  AddExtraDamage: 0
+  AddExtraHitRate: 0
+  ExtraDamage: 0
+  ExtraHitRate: 0

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerName: "\u7FC1\u6D2A\u4EAE"
   PlayerMajor: "\u6E38\u4FA0"
-  Money: 989
-  Lives: 5
-  BaseHealth: 45
+  Money: 2
+  Lives: 4
+  BaseHealth: 55
   BaseEndu: 5
-  Round: 0
-  Victories: 0
+  Round: 2
+  Victories: 1

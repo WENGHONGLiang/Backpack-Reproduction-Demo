@@ -51,13 +51,13 @@ public class BackpackManager : MonoBehaviour
             case ItemType.None:
                 break;
             case ItemType.Weapon:
-                weapons.Add((Weapon_SO)new_item);
+                weapons.Add((Weapon_SO)(((Weapon_SO)new_item).Clone()));
                 break;
             case ItemType.Shield:
-                shields.Add((ShieldItem_SO)new_item);
+                shields.Add((ShieldItem_SO)(((ShieldItem_SO)new_item).Clone()));
                 break;
             case ItemType.Decoration:
-                decorations.Add((Decoration_SO)new_item);
+                decorations.Add((Decoration_SO)((Decoration_SO)new_item).Clone());
                 break;
             case ItemType.Nature:
                 break;
@@ -82,13 +82,34 @@ public class BackpackManager : MonoBehaviour
             case ItemType.None:
                 break;
             case ItemType.Weapon:
-                weapons.Remove((Weapon_SO)new_item);
+                foreach (Weapon_SO weapon in weapons)
+                {
+                    if (weapon.itemName == new_item.itemName)
+                    {
+                        weapons.Remove(weapon);
+                        return;
+                    }
+                }
                 break;
             case ItemType.Shield:
-                shields.Remove((ShieldItem_SO)new_item);
+                foreach (ShieldItem_SO shield in shields)
+                {
+                    if (shield.itemName == new_item.itemName)
+                    {
+                        shields.Remove(shield);
+                        return;
+                    }
+                }
                 break;
             case ItemType.Decoration:
-                decorations.Remove((Decoration_SO)new_item);
+                foreach (Decoration_SO decoration in decorations)
+                {
+                    if (decoration.itemName == new_item.itemName)
+                    {
+                        decorations.Remove(decoration);
+                        return;
+                    }
+                }
                 break;
             case ItemType.Nature:
                 break;

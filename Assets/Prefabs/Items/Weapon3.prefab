@@ -192,12 +192,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efbf243e4e0e8af458cfca7834199b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  influenceType: 1
   SpecialNodeIndex: 010000000300000007000000
-  starPrefab: {fileID: 7651080782583863722, guid: a5bc3204bef8c78489620352500e48b5, type: 3}
+  starPrefab: {fileID: 7651080782583863722, guid: 76de34f4e1c3a0a4e9b793f4c2d45cf3, type: 3}
   starRoot: {fileID: 7310841011988805609}
-  starFull: {fileID: 21300000, guid: 1eea6ee3d9ba8ee49ad2446f14d965da, type: 3}
-  starEmpty: {fileID: 21300000, guid: 7a44b63e6a3f8ee4db2317053fde7121, type: 3}
+  starFull: {fileID: 21300000, guid: a30553637abc7f8418454abd9edcdea7, type: 3}
+  starEmpty: {fileID: 21300000, guid: 614506f6d36495348a8bcd71ec28cf13, type: 3}
+  starObj: []
 --- !u!1 &4744796326204234280
 GameObject:
   m_ObjectHideFlags: 0

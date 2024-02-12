@@ -64,14 +64,14 @@ public class BattleManager : MonoBehaviour
             decoration.InitItem();
         }
 
-        //foreach (var info in BackpackManager.instance.influenceInfos)
-        //{
-        //    info.influent.InfluentItem(info.target);
-        //}
-        //foreach (var info in EnemyManager.instance.influenceInfos)
-        //{
-        //    info.influent.InfluentItem(info.target);
-        //}
+        foreach (var info in BackpackManager.instance.influenceInfos)
+        {
+            info.influent.InfluentItem(info.target);
+        }
+        foreach (var info in EnemyManager.instance.influenceInfos)
+        {
+            info.influent.InfluentItem(info.target);
+        }
     }
 
     void UsePlayerItems()
@@ -91,7 +91,6 @@ public class BattleManager : MonoBehaviour
     {
         foreach (var weapon in EnemyManager.instance.GetWeapons())
         {
-            Debug.Log(weapon.itemName);
             weapon.UseItem(EnemyManager.instance.attribute, PlayerState.instance.attribute);
         }
         foreach (var decoration in EnemyManager.instance.GetDecoration())
@@ -130,7 +129,11 @@ public class BattleManager : MonoBehaviour
 
     void CheckGameEnd()
     {
-        if (PlayerState.instance.state.Round == 2)
+        if (PlayerState.instance.state.Victories == 10)
+        {
+            // EndGame
+        }
+        else if (PlayerState.instance.state.Lives == 0)
         {
             // EndGame
         }

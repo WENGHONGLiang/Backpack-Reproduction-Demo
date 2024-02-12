@@ -145,7 +145,6 @@ public class ItemInfluence : MonoBehaviour
                 BackpackManager.instance.influenceInfos.Add(info);
             }
         }
-        //Debug.Log(name + " : Add  " + influenceItems.Count);
 
     }
 
@@ -164,7 +163,6 @@ public class ItemInfluence : MonoBehaviour
             }
         }
 
-        //Debug.Log(name + " : Clear " + influenceItems.Count);
 
     }
 }
